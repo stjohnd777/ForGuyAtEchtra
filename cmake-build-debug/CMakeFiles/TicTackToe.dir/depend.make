@@ -19,6 +19,7 @@ CMakeFiles/TicTackToe.dir/src/Player.cpp.o: ../src/Player.h
 CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/Board.h
 CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/Common.h
 CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/Game.h
+CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/NeverLose.h
 CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/Player.h
 CMakeFiles/TicTackToe.dir/src/main.cpp.o: ../src/main.cpp
 

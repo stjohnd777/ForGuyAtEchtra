@@ -18,13 +18,33 @@ Common.h
 
 /Users/overman/CLionProjects/TicTackToe/src/Common.h
 
-/Users/overman/CLionProjects/TicTackToe/src/Player.cpp
+/Users/overman/CLionProjects/TicTackToe/src/Game.h
 iostream
 -
-sstream
+string
 -
+array
+-
+vector
+-
+memory
+-
+algorithm
+-
+random
+-
+Common.h
+/Users/overman/CLionProjects/TicTackToe/src/Common.h
+Board.h
+/Users/overman/CLionProjects/TicTackToe/src/Board.h
 Player.h
 /Users/overman/CLionProjects/TicTackToe/src/Player.h
+
+/Users/overman/CLionProjects/TicTackToe/src/NeverLose.h
+memory
+-
+Board.h
+/Users/overman/CLionProjects/TicTackToe/src/Board.h
 random
 -
 
@@ -41,4 +61,14 @@ string
 -
 functional
 -
+
+/Users/overman/CLionProjects/TicTackToe/src/main.cpp
+iostream
+-
+memory
+-
+Game.h
+/Users/overman/CLionProjects/TicTackToe/src/Game.h
+NeverLose.h
+/Users/overman/CLionProjects/TicTackToe/src/NeverLose.h
 

@@ -27,6 +27,12 @@ void HumanPlayer::play() {
         cout << "open cells " << ss.str() << " > ";
         cin >> cellIndex;
 
+        if ( cellIndex>8 || cellIndex < 0 ){
+            notValid = true;
+            cout << "Invalid Selection: must be b/t [0-9]" << endl;
+            continue;
+        }
+
         if ( board->IsOpenCell(cellIndex) ){
             board->set(cellIndex, xo);
             notValid = false;

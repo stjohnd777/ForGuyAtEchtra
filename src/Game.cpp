@@ -18,7 +18,7 @@ shared_ptr<Game> Game::CreateGame( shared_ptr<Player> X, shared_ptr<Player> O,  
     return shared_ptr<Game>(new Game(X,O,board));
 }
 
-Game::Game(shared_ptr<Player> X, shared_ptr<Player> O,shared_ptr<Board> board ):X(X), O(O), b(board){
+Game::Game(shared_ptr<Player> X, shared_ptr<Player> O,shared_ptr<Board> board ): X(X), O(O), board(board){
     //onTurn = isHeads() ? X : O;
     onTurn = X;
 }
@@ -52,7 +52,7 @@ GameState Game::GetGameSate() {
         return GameState::O_WINS;
     }
     // moves left
-    return b->MovesLeft() ? GameState::IN_PLAY : GameState::CATS;
+    return board->MovesLeft() ? GameState::IN_PLAY : GameState::CATS;
 }
 
 //int Game::index(int row, int col) {
@@ -65,9 +65,9 @@ GameState Game::ColMatch() {
     char X = CellState::CONTAINS_X;
     char O = CellState::CONTAINS_O;
     for (int col = 0; col < N; col++) {
-        auto A = (char) b->get(0,col);
-        auto B = (char)b->get(1,col);
-        auto C = (char) b->get(2,col);
+        auto A = (char) board->get(0, col);
+        auto B = (char)board->get(1, col);
+        auto C = (char) board->get(2, col);
         if (A == X && B == X && C == X ) {
             return GameState::X_WINS;
         }
@@ -83,9 +83,9 @@ GameState Game::RowMatch() {
     char X = CellState::CONTAINS_X;
     char O = CellState::CONTAINS_O;
     for (int row = 0; row < 3; row++) {
-        auto A = (char) b->get(row,0);
-        auto B = (char)b->get(row,1);
-        auto C = (char) b->get(row,2);
+        auto A = (char) board->get(row, 0);
+        auto B = (char)board->get(row, 1);
+        auto C = (char) board->get(row, 2);
         if (A == X && B ==  X && C  == X) {
             return GameState::X_WINS;
         }
@@ -101,9 +101,9 @@ GameState Game::DiagMatch() {
     char X = CellState::CONTAINS_X;
     char O = CellState::CONTAINS_O;
 
-    auto A = (char) b->get(0,0);
-    auto B = (char)b->get(1,1);
-    auto C = (char) b->get(2,2);
+    auto A = (char) board->get(0, 0);
+    auto B = (char)board->get(1, 1);
+    auto C = (char) board->get(2, 2);
     if (A == X && B ==  X && C  == X) {
         return GameState::X_WINS;
     }
@@ -111,9 +111,9 @@ GameState Game::DiagMatch() {
         return GameState::O_WINS;
     }
 
-    A = (char) b->get(2,2);
-    B = (char)b->get(1,1);
-    C = (char) b->get(2,0);
+    A = (char) board->get(2, 2);
+    B = (char)board->get(1, 1);
+    C = (char) board->get(2, 0);
     if (A == X && B ==  X && C  == X) {
         return GameState::X_WINS;
     }
@@ -125,17 +125,15 @@ GameState Game::DiagMatch() {
 
 GameState Game::Play() {
     state = GetGameSate();
-
     if ( onTurn == X) {
-        cout << "X on move " << onTurn->toString() <<  endl;
+        cout << "X on move " << "X=" << onTurn->toString() <<  endl;
     } else if ( onTurn == O){
-        cout << "Y on move " << onTurn->toString() << endl;
+        cout << "Y on move " << "Y=" << onTurn->toString() << endl;
     }else {
         throw new runtime_error("Invalid Game State `onTurn`");
     }
-
     while (state == IN_PLAY) {
-        b->show();
+        board->show();
         cout <<  endl;
         if (onTurn == X) {
             cout << "X on move " << onTurn->toString() <<  endl;
@@ -146,19 +144,6 @@ GameState Game::Play() {
             O->play();
             onTurn = X;
         }
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-        cout << endl;
-
         state = GetGameSate();
     }
     return state;
@@ -176,5 +161,6 @@ std::string Game::toString() {
     }else if ( state == GameState ::X_WINS){
         ss << "X Wins" << endl;
     }
+    board->show();
     return ss.str();
 }

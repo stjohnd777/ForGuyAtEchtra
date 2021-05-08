@@ -46,7 +46,7 @@ public:
         this->f = f;
     }
     virtual void play(){
-        f(board);
+        f(this->board);
     }
     virtual std::string toString(){
         return "Function Player" ;

@@ -38,5 +38,6 @@ protected:
 
 private:
     GameState state;
-    shared_ptr<Board> b;
+    shared_ptr<Board> board
+    ;
 };
