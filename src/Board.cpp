@@ -7,7 +7,6 @@
 #include <iostream>
 #include <algorithm>
 
-
 using namespace std;
 
 Board::Board(){
@@ -18,10 +17,12 @@ Board::Board(){
 }
 
 int Board::get(int index) {
+    // TODO :: out of range
     return board[index];
 }
 
 int Board::get(int row, int col){
+    // TODO :: out of range
     return get(index(row,col));
 }
 
@@ -30,6 +31,7 @@ void Board::set(int index, XO xo) {
 }
 
 void Board::set(int row, int col, XO xo) {
+    // TODO :: out of range
     board[index(row, col)] = xo;
 }
 
@@ -43,6 +45,7 @@ void Board::show() {
 
 bool Board::MovesLeft() {
     int counter = 0;
+    //vector<int> v;
     for_each(begin(board), end(board), [&](int elem) {
         if (elem == CellState::OPEN) {
             counter++;
@@ -50,6 +53,25 @@ bool Board::MovesLeft() {
     });
     return counter > 0 ? true : false;
 }
+
+vector<int> Board::Open() {
+    int counter = 0;
+    std::vector<int> v;
+    for (int index = 0; index < 9; index++) {
+        auto elem = get(index);
+        if (elem == XO::X || elem == XO::O) {
+            continue;
+        }
+        v.push_back(index);
+    }
+    return v;
+}
+
+bool Board::IsOpenCell(int index) {
+    return board[index] == CellState::OPEN;
+}
+
 int Board::index(int row, int col) {
+    // TODO :: out of range
     return col + row * N;
 }

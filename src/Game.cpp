@@ -19,7 +19,8 @@ shared_ptr<Game> Game::CreateGame( shared_ptr<Player> X, shared_ptr<Player> O,  
 }
 
 Game::Game(shared_ptr<Player> X, shared_ptr<Player> O,shared_ptr<Board> board ):X(X), O(O), b(board){
-    onTurn = isHeads() ? X : O;
+    //onTurn = isHeads() ? X : O;
+    onTurn = X;
 }
 
 GameState Game::GetGameSate() {
@@ -145,6 +146,12 @@ GameState Game::Play() {
             O->play();
             onTurn = X;
         }
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
         cout << endl;
         cout << endl;
         cout << endl;

@@ -3,6 +3,7 @@
 //
 #pragma once
 #include <array>
+#include <vector>
 #include <memory>
 
 #include "Common.h"
@@ -16,6 +17,8 @@ public:
     void set(int row, int col, XO xo) ;
     void show();
     bool MovesLeft();
+    std::vector<int> Open();
+    bool IsOpenCell(int index);
 protected:
     int N = 3;
     char X = CellState::CONTAINS_X;

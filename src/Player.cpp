@@ -2,6 +2,7 @@
 // Created by Daniel St. John on 5/7/21.
 //
 #include <iostream>
+#include <sstream>
 #include "Player.h"
 using namespace std;
 
@@ -13,10 +14,29 @@ HumanPlayer::HumanPlayer(XO xo, std::shared_ptr <Board> b) {
     this->board = b;
 }
 void HumanPlayer::play() {
-    int cellIndex;
-    cout << "enter cell [0-8] : ";
-    cin >> cellIndex;
-    board->set(cellIndex, xo);
+    bool notValid = true;
+    auto movesAvailable = board->Open();
+    std::stringstream ss;
+    for_each(begin(movesAvailable),end(movesAvailable),[&](int m){
+        ss << m << "," ;
+    });
+
+    do {
+        int cellIndex;
+        cout << "enter cell [0-8]  : ";
+        cout << "open cells " << ss.str() << " > ";
+        cin >> cellIndex;
+
+        if ( board->IsOpenCell(cellIndex) ){
+            board->set(cellIndex, xo);
+            notValid = false;
+        }else {
+            notValid = true;
+            cout << "Invalid Selection: Cell Taken" << endl;
+            cout << ss.str() << endl;
+        }
+
+    }while(notValid);
 }
 
 string HumanPlayer::toString() {
