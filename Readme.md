@@ -1,4 +1,4 @@
-### Echtra
+### Instructions From Echtra
 - One week Please turn it in before the week is out.
 - Four hours Work on it for only four hours.
 - Set a clock, sit down, and do your best.
@@ -30,7 +30,7 @@ I have many thoughts about the exercise.
 - https://en.wikipedia.org/wiki/Projective_plan
 - https://math.stackexchange.com/questions/417118/higher-dimenional-tic-tac-toe
 
-#### This code was originally designed to be extended hence the FunctionalPlayerclass and the Object.
+##### This code was originally designed to be extended hence the FunctionalPlayerclass and the Object. Was going to template it out ...
 - Objects
     - Board
     - Payer
@@ -48,6 +48,17 @@ was not on my Radar. So I coded a do not loose algorithm in a functional Hack.
 
 ##### Also there is allot of potential for folly in this exercise, for example range checking, user input checking and the rest. I did a minimal job here.
 
+
+Some Notes on How to Use FunctionalPlayer Class
+- you can add what ever is need, network pvp ectra ..
+
+```
+    auto player = make_shared<FunctionalPlayer>(XO::O, board);
+    player->setPlay([&](std::shared_ptr<Board> b) {
+        // you code here
+    });
+
+```
 
 
 
